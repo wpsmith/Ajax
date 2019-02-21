@@ -13,7 +13,7 @@
  *
  * @package   WPS\WP\Ajax
  * @author    Travis Smith <t@wpsmith.net>
- * @copyright 2018 Travis Smith
+ * @copyright 2018-2019 Travis Smith
  * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License v2
  * @link      https://github.com/akamai/wp-akamai
  * @since     0.2.0
