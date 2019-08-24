@@ -7,7 +7,6 @@ wp-cli.local.yml
 *.tar.gz
 *.zip
 
-### SublimeText template
 # Cache files for Sublime Text
 *.tmlanguage.cache
 *.tmPreferences.cache
