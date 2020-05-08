@@ -21,8 +21,8 @@
     "issues": "https://github.com/wpsmith/Ajax/issues"
   },
   "require"    : {
-    "php": ">=5.6.0",
-    "wpsmith/singleton": "^1.0.0"
+    "php": ">=7.2.0",
+    "wpsmith/singleton": "*"
   },
   "autoload": {
     "psr-4": {
