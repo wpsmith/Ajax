@@ -87,12 +87,13 @@ if ( ! class_exists( __NAMESPACE__ . '\Ajax' ) ) {
 		/**
 		 * Constructor
 		 *
-		 * @param string $name   Name (lower-case, without spaces, use underscore) of the WP Action
-		 * @param array  $script Array of script information: url, src (path), data (localized info).
+		 * @param string $name Name (lower-case, without spaces, use underscore) of the WP Action
+		 * @param callable $callback Callback to be called for Ajax processing.
+		 * @param array $script Array of script information: url, src (path), data (localized info).
 		 *
 		 * @return void.
 		 */
-		public function __construct( $name, $script = array(), $callback ) {
+		public function __construct( $name, $callback, $script = array() ) {
 			$this->name     = str_replace( ' ', '_', strtolower( $name ) );
 			$this->script   = $script;
 			$this->callback = $callback;
@@ -115,7 +116,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Ajax' ) ) {
 		 * Available parameters: nopriv, script_hook, callback
 		 *
 		 * @param string $param Parameter name.
-		 * @param mixed  $value Value of parameter.
+		 * @param mixed $value Value of parameter.
 		 *
 		 * @return bool.
 		 */
@@ -205,13 +206,13 @@ if ( ! class_exists( __NAMESPACE__ . '\Ajax' ) ) {
 		/**
 		 * Hooks action or executes action.
 		 *
-		 * @since  1.0.0
-		 * @author Travis Smith <t@wpsmith.net>
-		 *
 		 * @param string       WordPress action to be checked with did_action().
 		 * @param string|array Function name/array to be called.
 		 *
 		 * @return void.
+		 * @author Travis Smith <t@wpsmith.net>
+		 *
+		 * @since  1.0.0
 		 */
 		private function maybe_do_action( $hook, $action ) {
 			if ( ! is_callable( $action ) ) {
@@ -275,6 +276,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Ajax' ) ) {
 		protected function get_action() {
 			return "{$this->name}_action";
 		}
+
 		protected function get_defaults() {
 			$defaults              = array(
 				'ajaxurl'     => admin_url( 'admin-ajax.php' ),
